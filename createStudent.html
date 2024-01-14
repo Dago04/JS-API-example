@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create Student Page">
+
+    <link rel="shortcut icon" href="img/AvatarMaker.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Create Student</title>
+</head>
+
+<body>
+
+    <header>
+        <div id="Menu">
+
+        </div>
+    </header>
+
+    <main>
+        <section class=" mt-5">
+            <article class="container-main mx-auto">
+                <h2 class=" fs-3  mb-5 ">Create Student</h2>
+
+                <form id="createForm" action="" method="" class="w-100">
+                    <div class="row mb-3">
+                        <div class="col-md-4 d-flex flex-column ">
+                            <div class="mb-3">
+                                <label class="form-label " for="cedula">Document</label>
+                                <input class="form-control form-control-sm bg-light" type="number"
+                                    placeholder="Write your document" name="cedula" id="cedula" required>
+                            </div>
+                        </div>
+                        <div class="col-md-8 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label " for="correoelectronico">Email</label>
+                                <input class="form-control form-control-sm bg-light" type="email"
+                                    placeholder="Write your Email" name="correoelectronico" id="correoelectronico"
+                                    required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 d-flex flex-column ">
+                            <div class="mb-3">
+                                <label class="form-label " for="telefono">Phone</label>
+                                <input class="form-control form-control-sm bg-light" type="tel"
+                                    placeholder=" Write your phone" name="telefono" id="telefono" required>
+                                <div class="form-text">Format: 12-345-678</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label " for="telefonocelular">Cellphone</label>
+                                <input class="form-control form-control-sm bg-light" type="tel" pattern="
+                                [0-9]{2}-[0-9]{3}-[0-9]{3}" placeholder="Write your cellphone" name="telefonocelular"
+                                    id="telefonocelular">
+                                <div class="form-text">Format: 12-345-678</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label " for="fechanacimiento">Date of Birth</label>
+                                <input class="form-control form-control-sm bg-light" type="date" name="fechanacimiento"
+                                    id="fechanacimiento">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-4 d-flex flex-column ">
+                            <div class="mb-3">
+                                <label class="form-label" for="sexo">Gender</label>
+                                <select class="form-select form-select-sm bg-light" id="sexo" name="sexo" required>
+                                    <option selected>Choose your gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label" for="direccion">Address</label>
+                                <input class="form-control form-control-sm bg-light" type="text" name="direccion"
+                                    id="direccion" placeholder="Write your address">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label" for="nombre">Name</label>
+                                <input class="form-control form-control-sm bg-light" type="text" name="nombre"
+                                    id="nombre" placeholder="Write your name" required>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label" for="apellidopaterno">First Lastname</label>
+                                <input class="form-control form-control-sm bg-light" type="text" name="apellidopaterno"
+                                    id="apellidopaterno" placeholder="Write your first lastname" required>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label" for="apellidomaterno">Second Lastname</label>
+                                <input class="form-control form-control-sm bg-light" type="text" name="apellidomaterno"
+                                    id="apellidomaterno" placeholder="Write your second lastname">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label" for="nacionalidad">Citizenship</label>
+                                <input class="form-control form-control-sm bg-light" type="text" name="nacionalidad"
+                                    id="nacionalidad" placeholder="Write your Citizenship">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label" for="grupo">Group</label>
+                                <input class="form-control form-control-sm bg-light" type="text" name="grupo" id="grupo"
+                                    placeholder="Write your group" required>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <label class="form-label" for="usuario">User</label>
+                                <input class="form-control form-control-sm bg-light" type="text" name="usuario"
+                                    id="usuario" placeholder="Write your User" required>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Create" class="btn btn-dark w-50 shadow">
+                    </div>
+
+                </form>
+
+
+            </article>
+        </section>
+
+        <!-- <input type="submit" value="Send" class="btn btn-dark w-100 rounded-0"> -->
+
+
+    </main>
+    <footer>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="js/menu.js"></script>
+    <script src="js/createStudent.js"></script>
+</body>
+
+</html>

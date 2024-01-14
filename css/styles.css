@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Reset de CSS */
+* {
+    --colorSaturado:hsla(0, 0%, 100%, 0.904);
+    --FomrBGColor: hsla(0, 0%, 98%, 0.800);
+    --FS:1.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*General Styles*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var((--colorSaturado));
+    min-height: 100vh;
+     
+}
+header{
+    position: sticky;
+    top:0;
+    z-index: 1;
+}
+
+
+/*utility class*/
+.container-main{
+    background-color: var(--FomrBGColor);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    min-width: 300px;
+    height: auto;
+    padding: 1.5rem;
+}
+
+.nav-icons i{
+    font-size: var(--FS);
+    margin-right: 10px; 
+}
+/*Boostrap styling*/
+
+
+.nav-link:hover{
+    color:var((--colorSaturado));
+    text-decoration: underline;
+}
+.nav-link:visited{
+    color: white;
+}
+
+.navbar-brand img{
+  
+    border-radius: 50px;
+    max-height: 40px;
+}
+
+.form-control:hover{
+    transform: scale(1.009);
+    box-shadow: 0px 0px 3px 0px #212529;
+}
+
+
+
+/*Tabulator*/
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+    white-space: normal;
+}
+
+
+
