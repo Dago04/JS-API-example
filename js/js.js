@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
         paginationCounter: "rows",
     });
 
+
+
     fetch(apiUrl)
         .then(response => response.json())
 
