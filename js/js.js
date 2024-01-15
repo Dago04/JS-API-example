@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var apiUrl = 'https://paginas-web-cr.com/Api/apis/ListaEstudiantes.php';
     var APIBorrarEstudiante = 'https://paginas-web-cr.com/Api/apis/BorrarEstudiantes.php'
 
+
     var table = new Tabulator('#tabla-estudiantes', {
 
         layout: "fitColumns",
