@@ -16,7 +16,7 @@ menu.innerHTML = `   <nav class="navbar navbar-expand-lg py-3 bg-dark navbar-dar
                 <a class="nav-link" href="index.html">Lista</a>
             </li>
             <li class=" nav-item">
-                <a class="nav-link" href="createStudent.html">Crear Estudiante</a>
+                <a class="nav-link" href="createStudent.html">Create Student</a>
             </li>
 
         </ul>

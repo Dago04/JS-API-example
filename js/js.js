@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
             width: 200, //set the width on all columns to 200px
 
         },
-        cellPadding: 8,  // Ajusta el espaciado interno de las celdas
-        cellMargin: 4,
-
         pagination: "local",
         paginationSize: 10,
         paginationCounter: "rows",
@@ -29,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
 
         .then(data => {
+
             var columns = [
                 { title: "ID", field: "id", visible: false, resizable: false, hozAlign: "center", sorter: "number" },
                 {
