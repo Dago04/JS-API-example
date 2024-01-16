@@ -45,6 +45,9 @@ header{
 /*Boostrap styling*/
 
 
+.nav-link{
+    color: var(--LightColor);
+}
 .nav-link:hover{
     color:var((--colorSaturado));
     text-decoration: underline;
@@ -62,6 +65,10 @@ header{
 .form-control:hover{
     transform: scale(1.009);
     box-shadow: 0px 0px 3px 0px #212529;
+}
+.btn-dark{
+    background-color: var(--ModalHeaderBG);
+    color: var(--LightColor);
 }
 
 
