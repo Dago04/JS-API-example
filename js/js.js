@@ -132,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 //console.log('Server Response:', result);
 
                 if (result.data) {
+
                     row.delete();
                     console.log('Estudiante eliminado correctamente');
                     window.location.reload();
@@ -150,21 +151,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result);
-                if (result.data) {
-                    // row.update(); // No es necesario
+                console.log('Respuesta del servidor:', result);
 
-                    // Utiliza result.data en lugar de la variable no definida data
-                    fetch(apiUrl) // Vuelve a cargar todos los datos
-                        .then(response => response.json())
-                        .then(data => {
-
-                            row.update(data); // Actualiza la fila con los nuevos datos
-                            console.log('Estudiante actualizado correctamente');
-
-                            window.location.reload();
-                        })
-                        .catch(error => console.error('Error al recargar los datos', error));
+                if (result.code === 200 && result.message === 'Estudiante Updating Successful') {
+                    row.update();
+                    console.log('Estudiante actualizado correctamente');
                 } else {
                     console.log('Error al actualizar el estudiante desde el API');
                 }
