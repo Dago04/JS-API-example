@@ -42,6 +42,15 @@ header{
     font-size: var(--FS);
     margin-right: 10px; 
 }
+.downloadbtn{
+    background-color: var(--colorSaturado);
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+
+
+
 /*Boostrap styling*/
 
 
@@ -66,10 +75,8 @@ header{
     transform: scale(1.009);
     box-shadow: 0px 0px 3px 0px #212529;
 }
-.btn-dark{
-    background-color: var(--ModalHeaderBG);
-    color: var(--LightColor);
-}
+
+
 
 
 
@@ -84,6 +91,5 @@ header{
     background: var(--ModalHeaderBG);
     color:var(--LightColor);
 }
-
 
 

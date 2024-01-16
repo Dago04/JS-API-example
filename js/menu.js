@@ -20,7 +20,7 @@ menu.innerHTML = `   <nav class="navbar navbar-expand-lg py-3 bg-dark navbar-dar
             </li>
 
         </ul>
-
+        
         <div class="d-flex ">
             <a class=" nav-icons" href="https://www.linkedin.com/in/dagoberto-salas-cordero-10205521b/"
                 target="_blank">
