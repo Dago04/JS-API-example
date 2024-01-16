@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var apiUrl = 'https://paginas-web-cr.com/Api/apis/ListaEstudiantes.php';
     var APIBorrarEstudiante = 'https://paginas-web-cr.com/Api/apis/BorrarEstudiantes.php'
+    var APIActualizarEstudiante = 'https://paginas-web-cr.com/Api/apis/ActualizarEstudiantes.php'
+    var updateForm = document.getElementById('updateForm');
 
 
     var table = new Tabulator('#tabla-estudiantes', {
@@ -85,6 +87,36 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             });
+
+
+            document.getElementById('tabla-estudiantes').addEventListener('click', function (event) {
+                // Obtiene el elemento que disparó el evento clic
+                event.preventDefault();
+                var target = event.target;
+
+                // Verifica si el elemento tiene la clase 'btn-delete'
+                if (target.classList.contains('btn-edit')) {
+
+                    var row = table.getRow(target.closest('.tabulator-row'));
+
+                    var rowData = row.getData();
+                    // Verifica que la fila existe antes de continuar
+                    if (row) {
+
+                        showUpdateModal(rowData);
+
+                    }
+
+
+                    updateForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                        updateStudent(row, rowData);
+                    });
+                }
+            });
+
+
+
         })
 
         .catch(error => console.error('Error al cargar los datos desde la API', error));
@@ -110,6 +142,61 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => console.error('Error en la solicitud de eliminación', error));
     }
+
+    function updateStudent(row, rowData) {
+        fetch(APIActualizarEstudiante, {
+            method: 'POST',
+            body: JSON.stringify(rowData),
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                if (result.data) {
+                    // row.update(); // No es necesario
+
+                    // Utiliza result.data en lugar de la variable no definida data
+                    fetch(apiUrl) // Vuelve a cargar todos los datos
+                        .then(response => response.json())
+                        .then(data => {
+
+                            row.update(data); // Actualiza la fila con los nuevos datos
+                            console.log('Estudiante actualizado correctamente');
+
+                            window.location.reload();
+                        })
+                        .catch(error => console.error('Error al recargar los datos', error));
+                } else {
+                    console.log('Error al actualizar el estudiante desde el API');
+                }
+            })
+            .catch(error => console.error('Error en la solicitud de actualización', error));
+    }
+
+    function showUpdateModal(data) {
+        // Actualizar los campos del modal con la información de la fila
+        document.getElementById('cedula').value = data.cedula;
+        document.getElementById('correoelectronico').value = data.correoelectronico;
+        document.getElementById('telefono').value = data.telefono;
+        document.getElementById('telefonocelular').value = data.telefonocelular;
+        document.getElementById('fechanacimiento').value = data.fechanacimiento;
+        document.getElementById('sexo').value = data.sexo;
+        document.getElementById('direccion').value = data.direccion;
+        document.getElementById('nacionalidad').value = data.nacionalidad;
+        document.getElementById('nombre').value = data.nombre;
+        document.getElementById('apellidopaterno').value = data.apellidopaterno;
+        document.getElementById('apellidomaterno').value = data.apellidomaterno;
+        document.getElementById('grupo').value = data.idCarreras;
+        document.getElementById('usuario').value = data.usuario;
+
+        // Abrir el modal
+        var modal = new bootstrap.Modal(document.getElementById('Update'));
+        modal.show();
+
+
+    }
+
+
+
 
 
 
