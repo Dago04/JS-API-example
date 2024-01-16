@@ -5,6 +5,8 @@
     --colorSaturado:hsla(0, 0%, 100%, 0.904);
     --FomrBGColor: hsla(0, 0%, 98%, 0.800);
     --FS:1.5rem;
+    --ModalHeaderBG: rgb(33  37  41);
+    --LightColor: whitesmoke;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -48,7 +50,7 @@ header{
     text-decoration: underline;
 }
 .nav-link:visited{
-    color: white;
+    color: var(--LightColor);
 }
 
 .navbar-brand img{
@@ -67,6 +69,13 @@ header{
 /*Tabulator*/
 .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
     white-space: normal;
+}
+
+
+/*Modal*/
+.modal-header{
+    background: var(--ModalHeaderBG);
+    color:var(--LightColor);
 }
 
 

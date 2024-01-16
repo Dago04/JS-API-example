@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     var APIInsertarEstudiante = 'https://paginas-web-cr.com/Api/apis/InsertarEstudiantes.php';
-    var createForm = document.getElementById('createForm');
 
+    var createForm = document.getElementById('createForm');
+    var modalConfirm = new bootstrap.Modal(document.getElementById('Confirm'));
+
+    function showConfirm() {
+        modalConfirm.show();
+    }
     createForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -30,7 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Función para manejar la respuesta de la API
         var handleApiResponse = (datos) => {
             console.log('Respuesta de la API:', datos);
-            window.location.href = "index.html";
+
+            // Mostrar el modal de confirmación
+            showConfirm();
+            //retrasar el redireccionamiento
+            setTimeout(function () {
+                window.location.href = "index.html";
+            }, 2000);
         };
 
         // Función para manejar errores en la solicitud

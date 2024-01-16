@@ -30,6 +30,25 @@
     </header>
 
     <main>
+
+        <!--Modals -->
+        <div class="modal fade" id="Confirm" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            role="dialog" aria-labelledby="confirmacionTitulo" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-centered  modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title" id="modalTitleId">Confirmación</h5>
+                        <button onclick="" type="button" class="btn-close btn-light" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body justify-content-center">
+                        Registro realizado correctamente
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <section class=" mt-5">
             <article class="container-main mx-auto">
                 <h2 class=" fs-3  mb-5 ">Create Student</h2>
@@ -171,7 +190,8 @@
             </article>
         </section>
 
-        <!-- <input type="submit" value="Send" class="btn btn-dark w-100 rounded-0"> -->
+
+
 
 
     </main>
@@ -183,9 +203,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
 
     <script src="js/menu.js"></script>
     <script src="js/createStudent.js"></script>
+
 </body>
 
 </html>
