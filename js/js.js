@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     var apiUrl = 'https://paginas-web-cr.com/Api/apis/ListaEstudiantes.php';
-    var APIBorrarEstudiante = 'https://paginas-web-cr.com/Api/apis/BorrarEstudiantes.php'
-    var APIActualizarEstudiante = 'https://paginas-web-cr.com/Api/apis/ActualizarEstudiantes.php'
+    var APIBorrarEstudiante = 'https://paginas-web-cr.com/Api/apis/BorrarEstudiantes.php';
+    var APIActualizarEstudiante = 'https://paginas-web-cr.com/Api/apis/ActualizarEstudiantes.php';
     var updateForm = document.getElementById('updateForm');
+    var modal = new bootstrap.Modal(document.getElementById('Update'));
 
 
     var table = new Tabulator('#tabla-estudiantes', {
@@ -94,24 +95,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 event.preventDefault();
                 var target = event.target;
 
-                // Verifica si el elemento tiene la clase 'btn-delete'
                 if (target.classList.contains('btn-edit')) {
 
                     var row = table.getRow(target.closest('.tabulator-row'));
 
                     var rowData = row.getData();
-                    // Verifica que la fila existe antes de continuar
-                    if (row) {
 
+                    if (row) {
                         showUpdateModal(rowData);
 
+
                     }
-
-
                     updateForm.addEventListener('submit', function (event) {
-                        event.preventDefault();
+
+                        console.log(rowData);
                         updateStudent(row, rowData);
+
                     });
+
                 }
             });
 
@@ -123,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function deleteStudent(row, rowData) {
+
         fetch(APIBorrarEstudiante, {
             method: 'POST',
             body: JSON.stringify({ id: rowData.id }),
@@ -180,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('usuario').value = data.usuario;
 
         // Abrir el modal
-        var modal = new bootstrap.Modal(document.getElementById('Update'));
+
         modal.show();
 
 
