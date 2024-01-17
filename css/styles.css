@@ -95,5 +95,7 @@ nav{
     background: var(--ModalHeaderBG);
     color:var(--LightColor);
 }
-
+#Confirm{
+    z-index:  1051; 
+}
 

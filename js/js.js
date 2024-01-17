@@ -1,15 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-
-
     var apiUrl = 'https://paginas-web-cr.com/Api/apis/ListaEstudiantes.php';
     var APIBorrarEstudiante = 'https://paginas-web-cr.com/Api/apis/BorrarEstudiantes.php';
     var APIActualizarEstudiante = 'https://paginas-web-cr.com/Api/apis/ActualizarEstudiantes.php';
     var updateForm = document.getElementById('updateForm');
     var modal = new bootstrap.Modal(document.getElementById('Update'));
-
-
-
+    var modalConfirm = new bootstrap.Modal(document.getElementById('Confirm'));
     var table = new Tabulator('#tabla-estudiantes', {
 
         layout: "fitColumns",
@@ -25,9 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
         paginationSize: 10,
         paginationCounter: "rows",
     });
-
-
-
     fetch(apiUrl)
         .then(response => response.json())
 
@@ -70,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
             ];
             table.setColumns(columns);
             table.setData(data.data);
-
-
             // Agrega un evento clic al elemento con el ID 'tabla-estudiantes'
             document.getElementById('tabla-estudiantes').addEventListener('click', function (event) {
                 // Obtiene el elemento que disparó el evento clic
@@ -105,14 +96,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-
-
-
             updateForm.addEventListener('submit', function (event) {
                 event.preventDefault();
                 // Obtiene la fila actualizada desde la tabla
                 var row = table.getRows().find(row => row.getData().id === document.getElementById('id').value);
-
                 // Verifica que la fila existe antes de continuar
                 if (row) {
                     // Obtiene los datos actualizados del formulario
@@ -132,19 +119,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         idCarreras: document.getElementById('grupo').value,
                         usuario: document.getElementById('usuario').value,
                     };
-
                     // Envía los datos al servidor
                     updateStudent(row, updatedData);
                 }
-
             });
-
-
-
         })
 
         .catch(error => console.error('Error al cargar los datos desde la API', error));
-
 
     function deleteStudent(row, rowData) {
 
@@ -178,13 +159,16 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(result => {
 
                 row.update();
-                window.location.reload();
+                showConfirmUpdate();
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000);
+
                 console.log('Estudiante actualizado correctamente');
 
             })
             .catch(error => console.error('Error en la solicitud de actualización', error));
     }
-
     // Modifica la función showUpdateModal
     function showUpdateModal(data) {
         document.getElementById('id').value = data.id;
@@ -204,23 +188,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Abrir el modal
         modal.show();
-
     }
 
-
-
-
-
-
-
-
-
+    function showConfirmUpdate() {
+        modal.hide();
+        modalConfirm.show();
+    }
 
     document.getElementById("download-json").addEventListener("click", function () {
         table.download("json", "data.json");
     });
-
-
     //trigger download of data.pdf file
     document.getElementById("download-pdf").addEventListener("click", function () {
         table.download("pdf", "data.pdf", {
