@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var modal = new bootstrap.Modal(document.getElementById('Update'));
 
 
+
     var table = new Tabulator('#tabla-estudiantes', {
 
         layout: "fitColumns",
@@ -61,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
 
                 {
-                    title: "Actions", field: "accion", formatter: function () {
-                        return '<button class="btn btn-primary btn-sm btn-edit">Editar</button> <button id="btn-eliminar" class="btn btn-danger btn-sm btn-delete">Eliminar</button>';
+                    title: "Actions", field: "accion", formatter: function (cell, formatterParams, onRendered) {
+                        return '<button class="btn btn-primary btn-sm btn-edit" ")">Editar</button> <button id="btn-eliminar" class="btn btn-danger btn-sm btn-delete">Eliminar</button>';
                     }, hozAlign: "center", headerSort: false, width: 200
                 }
 
@@ -87,33 +88,55 @@ document.addEventListener('DOMContentLoaded', function () {
                         deleteStudent(row, row.getData());
                     }
                 }
+
+                // Verifica si el elemento tiene la clase 'btn-edit'
+                if (target.classList.contains('btn-edit')) {
+                    // Obtiene la fila asociada al botón de edición
+                    var row = table.getRow(target.closest('.tabulator-row'));
+
+                    // Verifica que la fila existe antes de continuar
+                    if (row) {
+                        // Obtiene los datos de la fila
+                        var rowData = row.getData();
+
+                        // Llama a la función para mostrar el modal con los datos de la fila
+                        showUpdateModal(rowData);
+                    }
+                }
             });
 
 
-            document.getElementById('tabla-estudiantes').addEventListener('click', function (event) {
-                // Obtiene el elemento que disparó el evento clic
+
+
+            updateForm.addEventListener('submit', function (event) {
                 event.preventDefault();
-                var target = event.target;
+                // Obtiene la fila actualizada desde la tabla
+                var row = table.getRows().find(row => row.getData().id === document.getElementById('id').value);
 
-                if (target.classList.contains('btn-edit')) {
+                // Verifica que la fila existe antes de continuar
+                if (row) {
+                    // Obtiene los datos actualizados del formulario
+                    var updatedData = {
+                        id: document.getElementById('id').value,
+                        cedula: document.getElementById('cedula').value,
+                        correoelectronico: document.getElementById('correoelectronico').value,
+                        telefono: document.getElementById('telefono').value,
+                        telefonocelular: document.getElementById('telefonocelular').value,
+                        fechanacimiento: document.getElementById('fechanacimiento').value,
+                        sexo: document.getElementById('sexo').value,
+                        direccion: document.getElementById('direccion').value,
+                        nacionalidad: document.getElementById('nacionalidad').value,
+                        nombre: document.getElementById('nombre').value,
+                        apellidopaterno: document.getElementById('apellidopaterno').value,
+                        apellidomaterno: document.getElementById('apellidomaterno').value,
+                        idCarreras: document.getElementById('grupo').value,
+                        usuario: document.getElementById('usuario').value,
+                    };
 
-                    var row = table.getRow(target.closest('.tabulator-row'));
-
-                    var rowData = row.getData();
-
-                    if (row) {
-                        showUpdateModal(rowData);
-
-
-                    }
-                    updateForm.addEventListener('submit', function (event) {
-
-                        console.log(rowData);
-                        updateStudent(row, rowData);
-
-                    });
-
+                    // Envía los datos al servidor
+                    updateStudent(row, updatedData);
                 }
+
             });
 
 
@@ -153,20 +176,18 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.json())
             .then(result => {
-                console.log('Respuesta del servidor:', result);
 
-                if (result.code === 200 && result.message === 'Estudiante Updating Successful') {
-                    row.update();
-                    console.log('Estudiante actualizado correctamente');
-                } else {
-                    console.log('Error al actualizar el estudiante desde el API');
-                }
+                row.update();
+                window.location.reload();
+                console.log('Estudiante actualizado correctamente');
+
             })
             .catch(error => console.error('Error en la solicitud de actualización', error));
     }
 
+    // Modifica la función showUpdateModal
     function showUpdateModal(data) {
-        // Actualizar los campos del modal con la información de la fila
+        document.getElementById('id').value = data.id;
         document.getElementById('cedula').value = data.cedula;
         document.getElementById('correoelectronico').value = data.correoelectronico;
         document.getElementById('telefono').value = data.telefono;
@@ -182,12 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('usuario').value = data.usuario;
 
         // Abrir el modal
-
         modal.show();
 
-
     }
-
 
 
 

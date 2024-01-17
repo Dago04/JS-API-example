@@ -26,6 +26,10 @@ header{
     z-index: 1;
 }
 
+nav{
+    box-shadow: 0 7px 5px -5px gray;
+}
+
 
 /*utility class*/
 .container-main{
