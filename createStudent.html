@@ -66,7 +66,8 @@
                             <div class="mb-3">
                                 <label class="form-label " for="cedula">Document</label>
                                 <input class="form-control form-control-sm bg-light" type="number"
-                                    placeholder="Write your document" name="cedula" id="cedula" required>
+                                    placeholder="Write your document" name="cedula" id="cedula" required
+                                    autocomplete="off">
                             </div>
                         </div>
                         <div class="col-md-8 d-flex flex-column">
@@ -74,7 +75,7 @@
                                 <label class="form-label " for="correoelectronico">Email</label>
                                 <input class="form-control form-control-sm bg-light" type="email"
                                     placeholder="Write your Email" name="correoelectronico" id="correoelectronico"
-                                    required>
+                                    required autocomplete="off">
                             </div>
                         </div>
 
@@ -85,17 +86,18 @@
                             <div class="mb-3">
                                 <label class="form-label " for="telefono">Phone</label>
                                 <input class="form-control form-control-sm bg-light" type="tel"
-                                    placeholder=" Write your phone" name="telefono" id="telefono" required>
-                                <div class="form-text">Format: 12-345-678</div>
+                                    placeholder=" Write your phone" name="telefono" id="telefono" pattern="^\+\d{11}$"
+                                    required autocomplete="off">
+                                <div class="form-text">Format: +50612345678</div>
                             </div>
                         </div>
                         <div class="col-md-4 d-flex flex-column">
                             <div class="mb-3">
                                 <label class="form-label " for="telefonocelular">Cellphone</label>
-                                <input class="form-control form-control-sm bg-light" type="tel" pattern="
-                                [0-9]{2}-[0-9]{3}-[0-9]{3}" placeholder="Write your cellphone" name="telefonocelular"
-                                    id="telefonocelular">
-                                <div class="form-text">Format: 12-345-678</div>
+                                <input class="form-control form-control-sm bg-light" type="tel"
+                                    placeholder="Write your cellphone" name="telefonocelular" id="telefonocelular"
+                                    pattern="^\+\d{11}$" autocomplete="off">
+                                <div class="form-text">Format: +50612345678</div>
                             </div>
                         </div>
 
@@ -126,7 +128,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="direccion">Address</label>
                                 <input class="form-control form-control-sm bg-light" type="text" name="direccion"
-                                    id="direccion" placeholder="Write your address">
+                                    id="direccion" placeholder="Write your address" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -136,7 +138,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="nombre">Name</label>
                                 <input class="form-control form-control-sm bg-light" type="text" name="nombre"
-                                    id="nombre" placeholder="Write your name" required>
+                                    id="nombre" placeholder="Write your name" required autocomplete="off">
                             </div>
 
                         </div>
@@ -145,7 +147,8 @@
                             <div class="mb-3">
                                 <label class="form-label" for="apellidopaterno">First Lastname</label>
                                 <input class="form-control form-control-sm bg-light" type="text" name="apellidopaterno"
-                                    id="apellidopaterno" placeholder="Write your first lastname" required>
+                                    id="apellidopaterno" placeholder="Write your first lastname" required
+                                    autocomplete="off">
                             </div>
 
                         </div>
@@ -153,7 +156,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="apellidomaterno">Second Lastname</label>
                                 <input class="form-control form-control-sm bg-light" type="text" name="apellidomaterno"
-                                    id="apellidomaterno" placeholder="Write your second lastname">
+                                    id="apellidomaterno" placeholder="Write your second lastname" autocomplete="off">
                             </div>
 
                         </div>
@@ -164,7 +167,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="nacionalidad">Citizenship</label>
                                 <input class="form-control form-control-sm bg-light" type="text" name="nacionalidad"
-                                    id="nacionalidad" placeholder="Write your Citizenship">
+                                    id="nacionalidad" placeholder="Write your Citizenship" autocomplete="off">
                             </div>
 
                         </div>
@@ -173,7 +176,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="grupo">Group</label>
                                 <input class="form-control form-control-sm bg-light" type="text" name="grupo" id="grupo"
-                                    placeholder="Write your group" required>
+                                    placeholder="Write your group" required autocomplete="off">
                             </div>
 
                         </div>
@@ -181,7 +184,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="usuario">User</label>
                                 <input class="form-control form-control-sm bg-light" type="text" name="usuario"
-                                    id="usuario" placeholder="Write your User" required>
+                                    id="usuario" placeholder="Write your User" required autocomplete="off">
                             </div>
 
                         </div>

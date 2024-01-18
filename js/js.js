@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var updateForm = document.getElementById('updateForm');
     var modal = new bootstrap.Modal(document.getElementById('Update'));
     var modalConfirm = new bootstrap.Modal(document.getElementById('Confirm'));
+    var modalDelete = new bootstrap.Modal(document.getElementById('Delete'));
+    var modalError = new bootstrap.Modal(document.getElementById('Error'));
+    var btnDelete = document.getElementById('delete-btn');
     var table = new Tabulator('#tabla-estudiantes', {
 
         layout: "fitColumns",
@@ -48,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     columns: [
 
                         { title: "Email", field: "correoelectronico", hozAlign: "center", sorter: "string", },
-                        { title: "Phone", field: "telefono", hozAlign: "center", sorter: "number", width: 100 },
+                        { title: "Phone", field: "telefono", hozAlign: "center", sorter: "number", width: 130 },
                         { title: "User", field: "usuario", hozAlign: "center", sorter: "string", width: 100 },
                         { title: "Teléfono Celular", visible: false, field: "telefonocelular", hozAlign: "center", sorter: "number" },
                     ]
@@ -75,8 +78,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Verifica que la fila existe antes de continuar
                     if (row) {
+                        var rowData = row.getData();
                         // Llama a la función para eliminar el estudiante con los datos de la fila
-                        deleteStudent(row, row.getData());
+                        showDelete();
+
+                        btnDelete.addEventListener('click', function () {
+                            deleteStudent(row, rowData);
+                        })
+                        //deleteStudent(row, row.getData());
                     }
                 }
 
@@ -90,8 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Obtiene los datos de la fila
                         var rowData = row.getData();
 
-                        // Llama a la función para mostrar el modal con los datos de la fila
+
                         showUpdateModal(rowData);
+
+
                     }
                 }
             });
@@ -141,10 +152,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     row.delete();
                     console.log('Estudiante eliminado correctamente');
-                    window.location.reload();
+                    showConfirm();
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2000);
 
                 } else {
-                    console.log('Error al eliminar el estudiante desde el api');
+                    showErrorDelete();
                 }
             })
             .catch(error => console.error('Error en la solicitud de eliminación', error));
@@ -157,14 +171,16 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.json())
             .then(result => {
+                if (result.data) {
+                    row.update();
+                    showConfirmUpdate();
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2000);
+                } else {
+                    showErrorUpdate();
+                }
 
-                row.update();
-                showConfirmUpdate();
-                setTimeout(function () {
-                    window.location.reload();
-                }, 2000);
-
-                console.log('Estudiante actualizado correctamente');
 
             })
             .catch(error => console.error('Error en la solicitud de actualización', error));
@@ -190,9 +206,31 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.show();
     }
 
+    function showDelete() {
+        modalDelete.show();
+    }
+
     function showConfirmUpdate() {
         modal.hide();
         modalConfirm.show();
+    }
+
+    function showConfirm() {
+        document.getElementById('confirmationMessage').innerHTML = 'Delete successfull';
+        modalDelete.hide();
+        modalConfirm.show();
+    }
+
+    function showErrorDelete() {
+        document.getElementById('ErrorMessage').innerHTML = 'Error updating student';
+        modalDelete.hide();
+        modalError.show();
+    }
+
+    function showErrorUpdate() {
+        document.getElementById('ErrorMessage').innerHTML = 'Error updating student';
+        modal.hide();
+        modalError.show();
     }
 
     document.getElementById("download-json").addEventListener("click", function () {
