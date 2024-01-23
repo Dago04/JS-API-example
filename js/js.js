@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (row) {
                         var rowData = row.getData();
                         // Llama a la función para eliminar el estudiante con los datos de la fila
-                        showDelete();
+                        showDelete(rowData.nombre);
 
                         btnDelete.addEventListener('click', function () {
                             deleteStudent(row, rowData);
@@ -206,7 +206,8 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.show();
     }
 
-    function showDelete() {
+    function showDelete(student) {
+        document.getElementById('confirmationMessageDelete').innerHTML = `Are u sure to delete ${student}`;
         modalDelete.show();
     }
 
